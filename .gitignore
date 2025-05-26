@@ -1,2 +1,64 @@
-.idea
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# SQLite database
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+.env.*
+
+# Django migration files (optional – گاهی دوست داری نگه‌شون داری)
+*/migrations/__pycache__/
+*/migrations/*.pyc
+
+# Virtualenv
 venv/
+env/
+ENV/
+.venv/
+.pytest_cache/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Static/media generated
+staticfiles/
+media/
+
+# Coverage reports
+htmlcov/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# MyPy / Pyright / Pylint
+.mypy_cache/
+.pyright/
+.pylint.d/
+
+# Node.js (اگر از npm یا tailwind استفاده می‌کنی)
+node_modules/
+package-lock.json
+
+# JetBrains IDEs (PyCharm)
+.idea/
