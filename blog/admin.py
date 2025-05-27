@@ -8,9 +8,9 @@ class CommentInline(admin.TabularInline):
         'display_name',
         'text',
         'status',
-        'created_at',
-        'updated_at',
     ]
+    min_num = 0
+    extra = 1
 
 @admin.register(Post)
 class BlogAdmin(admin.ModelAdmin):
