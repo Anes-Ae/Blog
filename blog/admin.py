@@ -2,6 +2,16 @@ from django.contrib import admin
 
 from .models import Post, Comment
 
+class CommentInline(admin.TabularInline):
+    model = Comment
+    fields = [
+        'display_name',
+        'text',
+        'status',
+        'created_at',
+        'updated_at',
+    ]
+
 @admin.register(Post)
 class BlogAdmin(admin.ModelAdmin):
     model = Post
@@ -25,4 +35,7 @@ class BlogAdmin(admin.ModelAdmin):
         'title',
     ]
     list_max_show_all = 10
+    inlines = [
+        CommentInline,
+    ]
 
