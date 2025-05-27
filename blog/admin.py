@@ -41,3 +41,19 @@ class BlogAdmin(admin.ModelAdmin):
         CommentInline,
     ]
 
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    model = Comment
+    list_display = [
+        'post',
+        'display_name',
+        'text',
+        'status',
+    ]
+    readonly_fields = [
+        'created_at',
+        'updated_at',
+    ]
+    list_editable = [
+        'status',
+    ]
