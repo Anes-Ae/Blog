@@ -28,6 +28,7 @@ class Post(models.Model):
     Categories = models.ManyToManyField('categories.Category', related_name='posts', verbose_name=_('categories'))
     tags = TaggableManager(_('tags'))
     views = models.PositiveIntegerField(_('views'), default=0)
+    likes = models.PositiveIntegerField(_('likes'), default=0)
     is_featured = models.BooleanField(_('is featured'), default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
