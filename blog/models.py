@@ -25,6 +25,7 @@ class Post(models.Model):
     main_content = HTMLField(_('main content'))
     status = models.CharField(_('status'), max_length=3, choices=POST_STATUS_CHOICES)
     publish = models.DateTimeField(default=timezone.now)
+    Categories = models.ManyToManyField('categories.Category', related_name='posts', verbose_name=_('categories'))
     tags = TaggableManager(_('tags'))
     views = models.PositiveIntegerField(_('views'), default=0)
     is_featured = models.BooleanField(_('is featured'), default=False)
