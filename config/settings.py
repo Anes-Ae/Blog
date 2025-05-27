@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # local apps
     'core', # for user management
     'blog', # blog app for post and comment models
+    'categories', # for posts categories
 
 
 ]
