@@ -52,3 +52,30 @@ class Post(models.Model):
     class Meta:
         verbose_name = _('blog posts')
         verbose_name_plural = _('post')
+
+
+
+class Comment(models.Model):
+    COMMENT_STATUS_PUBLISHED = 'pub'
+    COMMENT_STATUS_DRAFT = 'drf'
+    COMMENT_STATUS_REJECTED = 'rjt'
+
+    COMMENT_STATUS_CHOICES = (
+        (COMMENT_STATUS_PUBLISHED, 'published'),
+        (COMMENT_STATUS_DRAFT, 'draft'),
+        (COMMENT_STATUS_REJECTED, 'scheduled'),
+    )
+
+    post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name='comments', verbose_name=_('post'))
+    display_name = models.CharField(_('display name'), max_length=100, unique=True)
+    text = models.TextField(_('text'))
+    status = models.CharField(_('status'), max_length=3, choices=COMMENT_STATUS_CHOICES)
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated at'), auto_now=True)
+
+    def __str__(self):
+        return self.display_name
+
+    class Meta:
+        verbose_name = _('comment')
+        verbose_name_plural = _('comments')
