@@ -1,20 +1,19 @@
 from django.db import models
 from django.shortcuts import reverse
-from django.utils.text import gettext_lazy as _
-
+from django.utils.text import gettext_lazy as _, slugify
 from taggit.managers import TaggableManager
 
 class Category(models.Model):
     parent = models.ForeignKey('self', on_delete=models.PROTECT, null=True, blank=True, related_name='child')
-    title = models.CharField(max_length=150)
-    slug = models.SlugField(unique=True, blank=True, help_text=_(
+    title = models.CharField(_('title'), max_length=150)
+    slug = models.SlugField(_('slug'), unique=True, blank=True, help_text=_(
         "It is preferable to leave this field blank so that it will be filled in automatically."
     ))
-    description = models.CharField(max_length=350)
-    image = models.ImageField(upload_to='category_images/')
-    tag = TaggableManager()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    description = models.CharField(_('description'), max_length=350)
+    image = models.ImageField(_('image'), upload_to='category_images/', blank=True, null=True)
+    tag = TaggableManager(_('tags'))
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
     def __str__(self):
         return self.title
@@ -28,5 +27,5 @@ class Category(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name = _('categories')
-        verbose_name_plural = _('category')
+        verbose_name = _('category')
+        verbose_name_plural = _('categories')
