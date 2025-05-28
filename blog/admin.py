@@ -22,17 +22,28 @@ class BlogAdmin(admin.ModelAdmin):
         'is_featured',
         'views',
     ]
-    list_editable = [
+    list_display_links = [
+        'title',
+    ]
+    search_fields = [
+        'title',
+        'main_content'
+    ]
+    list_filter = [
         'status',
-        'is_featured'
+        'title',
+    ]
+    ordering = [
+        '-created_at',
+        'title',
     ]
     readonly_fields = [
         'created_at',
         'updated_at',
     ]
-    list_filter = [
+    list_editable = [
         'status',
-        'title',
+        'is_featured'
     ]
     list_max_show_all = 10
 
