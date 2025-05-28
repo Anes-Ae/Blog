@@ -35,7 +35,6 @@ class BlogAdmin(admin.ModelAdmin):
         'title',
     ]
     list_max_show_all = 10
-    prepopulated_fields = {'slug': ('title',)}
 
     inlines = [
         CommentInline,

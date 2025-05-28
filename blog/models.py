@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.text import slugify, gettext_lazy as _
+from django.utils.text import gettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.shortcuts import reverse
@@ -42,7 +42,7 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = self.title.replace(' ', '-')
         super().save(*args, **kwargs)
 
     def is_visible(self):

@@ -4,6 +4,13 @@ from .models import Category
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    model = Category
+    fields = [
+        'id',
+        'title',
+        'created_at',
+        'updated_at',
+    ]
     list_display = [
         'id',
         'title',
@@ -30,7 +37,7 @@ class CategoryAdmin(admin.ModelAdmin):
         'created_at',
         'updated_at'
     ]
-    prepopulated_fields = {'slug': ('title',)}
+
 
 
 

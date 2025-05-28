@@ -1,11 +1,11 @@
 from django.db import models
 from django.shortcuts import reverse
-from django.utils.text import slugify, gettext_lazy as _
+from django.utils.text import gettext_lazy as _
 
 from taggit.managers import TaggableManager
 
 class Category(models.Model):
-    parent = models.ForeignKey('self', on_delete=models.PROTECT, related_name='child')
+    parent = models.ForeignKey('self', on_delete=models.PROTECT, null=True, blank=True, related_name='child')
     title = models.CharField(max_length=150)
     slug = models.SlugField(unique=True, blank=True)
     description = models.CharField(max_length=350)
@@ -15,11 +15,15 @@ class Category(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def get_absolute_url(self):
         return reverse('category-detail', args=[self.slug])
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self.title.replace(' ', '-')
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('categories')
