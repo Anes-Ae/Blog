@@ -25,6 +25,7 @@ class Post(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, related_name='posts', verbose_name=_('author'))
     featured_image = models.ImageField(_('featured image'), upload_to='blog images/', null=True, blank=True)
     main_content = HTMLField(_('main content'))
+    description = models.TextField()
     status = models.CharField(_('status'), max_length=3, choices=POST_STATUS_CHOICES, default=POST_STATUS_DRAFT)
     publish = models.DateTimeField(default=timezone.now)
     categories = models.ManyToManyField('categories.Category', related_name='posts', verbose_name=_('categories'))
@@ -72,7 +73,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name='comments', verbose_name=_('post'))
     display_name = models.CharField(_('display name'), max_length=100)
     text = models.TextField(_('text'))
-    status = models.CharField(_('status'), max_length=3, choices=COMMENT_STATUS_CHOICES)
+    status = models.CharField(_('status'), max_length=3, choices=COMMENT_STATUS_CHOICES, default=COMMENT_STATUS_DRAFT)
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
