@@ -1,95 +1,31 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
+{% extends '_base.html' %}
+
 {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وبلاگ مدرن</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="dark-mode">
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <h1>وبلاگ</h1>
-            </div>
-            <div class="nav-links">
-                <a href="index.html" class="active">خانه</a>
-                <a href="posts.html">مقالات</a>
-                <a href="categories.html">دسته‌بندی‌ها</a>
-                <a href="about.html">درباره ما</a>
-                <a href="contact.html">تماس</a>
-                <a href="search.html"><i class="fas fa-search"></i></a>
-                <a href="dashboard.html" class="dashboard-btn">پنل کاربری</a>
-            </div>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+{% block page_title %}  {% endblock %}
 
-    <header class="hero">
-        <div class="container">
-            <h1>به وبلاگ ما خوش آمدید</h1>
-            <p>جدیدترین مقالات در حوزه تکنولوژی و برنامه‌نویسی</p>
-        </div>
-    </header>
-
+{% block page_content %}
     <main class="container">
         <section class="featured-posts">
             <h2>مقالات ویژه</h2>
             <div class="posts-grid">
-                <!-- Featured Post Cards -->
+                  {% for post in post_list %}
                 <article class="post-card">
                     <div class="post-image">
                         <img src="https://via.placeholder.com/300x200" alt="عنوان مقاله">
                     </div>
                     <div class="post-content">
-                        <h3>عنوان مقاله اول</h3>
-                        <p>خلاصه مقاله در اینجا نمایش داده می‌شود...</p>
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.description|truncatewords:8 }}</p>
                         <div class="post-meta">
-                            <span><i class="far fa-clock"></i> ۵ دقیقه</span>
-                            <span><i class="far fa-user"></i> نویسنده</span>
+                            <span><i class="far fa-clock"></i>{{ post.reading_time }}</span>
+                            <span><i class="far fa-user"></i>نویسنده:{{ post.author }}</span>
                         </div>
                     </div>
                 </article>
-                <!-- More post cards can be added here -->
+                {% empty %}
+                <p>مقاله ای یافت نشد!</p>
+                {% endfor %}
             </div>
         </section>
     </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>درباره ما</h3>
-                    <p>وبلاگی برای به اشتراک‌گذاری دانش و تجربیات در حوزه تکنولوژی</p>
-                </div>
-                <div class="footer-section">
-                    <h3>لینک‌های مفید</h3>
-                    <ul>
-                        <li><a href="about.html">درباره ما</a></li>
-                        <li><a href="contact.html">تماس با ما</a></li>
-                        <li><a href="privacy.html">حریم خصوصی</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>شبکه‌های اجتماعی</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; ۱۴۰۲ تمامی حقوق محفوظ است.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-</html>
+{% endblock %}
