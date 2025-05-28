@@ -7,7 +7,9 @@ from taggit.managers import TaggableManager
 class Category(models.Model):
     parent = models.ForeignKey('self', on_delete=models.PROTECT, null=True, blank=True, related_name='child')
     title = models.CharField(max_length=150)
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(unique=True, blank=True, help_text=_(
+        "It is preferable to leave this field blank so that it will be filled in automatically."
+    ))
     description = models.CharField(max_length=350)
     image = models.ImageField(upload_to='category_images/')
     tag = TaggableManager()
