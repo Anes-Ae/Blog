@@ -27,7 +27,7 @@ class Post(models.Model):
     main_content = HTMLField(_('main content'))
     status = models.CharField(_('status'), max_length=3, choices=POST_STATUS_CHOICES)
     publish = models.DateTimeField(default=timezone.now)
-    Categories = models.ManyToManyField('categories.Category', related_name='posts', verbose_name=_('categories'))
+    categories = models.ManyToManyField('categories.Category', related_name='posts', verbose_name=_('categories'))
     tags = TaggableManager(_('tags'))
     views = models.PositiveIntegerField(_('views'), default=0)
     likes = models.PositiveIntegerField(_('likes'), default=0)
@@ -49,12 +49,12 @@ class Post(models.Model):
 
     def is_visible(self):
         return (
-                (self.status == 'published') or
+                (self.status == 'pub') or
                 (self.status == 'scheduled' and self.publish <= timezone.now())
         )
     class Meta:
-        verbose_name = _('blog posts')
-        verbose_name_plural = _('post')
+        verbose_name = _('post')
+        verbose_name_plural = _('blog posts')
 
 
 
@@ -70,7 +70,7 @@ class Comment(models.Model):
     )
 
     post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name='comments', verbose_name=_('post'))
-    display_name = models.CharField(_('display name'), max_length=100, unique=True)
+    display_name = models.CharField(_('display name'), max_length=100)
     text = models.TextField(_('text'))
     status = models.CharField(_('status'), max_length=3, choices=COMMENT_STATUS_CHOICES)
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
