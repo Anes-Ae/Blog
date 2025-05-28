@@ -48,6 +48,7 @@ class CommentAdmin(admin.ModelAdmin):
         'post',
         'display_name',
         'text',
+
         'status',
     ]
     readonly_fields = [
