@@ -19,7 +19,9 @@ class Post(models.Model):
     )
 
     title = models.CharField(_('title'), max_length=150)
-    slug = models.SlugField(_('slug'), unique=True, blank=True)
+    slug = models.SlugField(_('slug'), unique=True, blank=True, help_text=_(
+        'It is preferable to leave this field blank so that it will be filled in automatically.'
+    ))
     author = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, related_name='posts', verbose_name=_('author'))
     featured_image = models.ImageField(_('featured image'), upload_to='blog images/', null=True, blank=True)
     main_content = HTMLField(_('main content'))
