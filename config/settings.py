@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # third party
     'taggit',
+    'tinymce',
 
     # local apps
     'core', # for user management

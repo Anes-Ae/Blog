@@ -25,7 +25,7 @@ class Post(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, related_name='posts', verbose_name=_('author'))
     featured_image = models.ImageField(_('featured image'), upload_to='blog images/', null=True, blank=True)
     main_content = HTMLField(_('main content'))
-    status = models.CharField(_('status'), max_length=3, choices=POST_STATUS_CHOICES)
+    status = models.CharField(_('status'), max_length=3, choices=POST_STATUS_CHOICES, default=POST_STATUS_DRAFT)
     publish = models.DateTimeField(default=timezone.now)
     categories = models.ManyToManyField('categories.Category', related_name='posts', verbose_name=_('categories'))
     tags = TaggableManager(_('tags'))
