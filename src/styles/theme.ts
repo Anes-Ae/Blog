@@ -1,0 +1,38 @@
+export const theme = {
+  dark: {
+    background: '#000c1e',
+    cardBackground: '#13243d',
+    textPrimary: '#ffffff',
+    textSecondary: '#a0a0a0',
+    iconColor: '#b3b3b3',
+    linkHover: '#3f8cff',
+    buttonHover: 'rgba(59, 106, 176, 0.2)',
+    accent: '#3f8cff',
+    border: '#2a3f5f',
+    sidebar: '#0a1528',
+    headerBackground: '#13243d',
+  },
+  light: {
+    background: '#d4e5ff',
+    cardBackground: '#ffffff',
+    textPrimary: '#000000',
+    textSecondary: '#4a4a4a',
+    iconColor: '#666666',
+    linkHover: '#3f8cff',
+    buttonHover: 'rgba(59, 106, 176, 0.1)',
+    accent: '#3f8cff',
+    border: '#e2e8f0',
+    sidebar: '#ffffff',
+    headerBackground: '#ffffff',
+  },
+  transition: {
+    default: 'all 0.3s ease-in-out',
+    theme: 'background-color 0.5s ease-in-out, color 0.5s ease-in-out',
+  },
+  breakpoints: {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+  },
+} 

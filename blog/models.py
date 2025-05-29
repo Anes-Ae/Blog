@@ -41,7 +41,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    object = PostManager()
+    objects = PostManager()
 
     def __str__(self):
         return f'title: {self.title} author: {self.author}'
@@ -49,9 +49,17 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post-detail', args=[self.slug])
 
+
+
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = self.title.replace(' ', '-')
+            base_slug = self.title.replace(' ', '-')
+            slug = base_slug
+            counter = 2
+            while Post.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
         super().save(*args, **kwargs)
 
     def is_visible(self):

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block page_title %}  {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>مقالات - وبلاگ مدرن</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    {% block style %} {% endblock %}
 </head>
 <body class="dark-mode">
     <nav class="navbar">
@@ -16,8 +14,8 @@
                 <h1>وبلاگ</h1>
             </div>
             <div class="nav-links">
-                <a href="index.html" class="active">خانه</a>
-                <a href="posts.html">مقالات</a>
+                <a href="index.html">خانه</a>
+                <a href="posts.html" class="active">مقالات</a>
                 <a href="categories.html">دسته‌بندی‌ها</a>
                 <a href="about.html">درباره ما</a>
                 <a href="contact.html">تماس</a>
@@ -30,15 +28,49 @@
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <h1>به وبلاگ ما خوش آمدید</h1>
-            <p>جدیدترین مقالات در حوزه تکنولوژی و برنامه‌نویسی</p>
-        </div>
-    </header>
-    <main>
-{% block page_content %} {% endblock %}
-         </main>
+    <main class="container">
+        <section class="posts-section">
+            <h1>همه مقالات</h1>
+            <div class="posts-filter">
+                <input type="text" class="search-input" placeholder="جستجو در مقالات...">
+                <select class="category-filter">
+                    <option value="">همه دسته‌ها</option>
+                    <option value="technology">تکنولوژی</option>
+                    <option value="programming">برنامه‌نویسی</option>
+                    <option value="design">طراحی</option>
+                </select>
+            </div>
+            <div class="posts-grid">
+                <!-- Post Card Template -->
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/300x200" alt="عنوان مقاله">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-category">تکنولوژی</div>
+                        <h3>عنوان مقاله اول</h3>
+                        <p>خلاصه مقاله در اینجا نمایش داده می‌شود...</p>
+                        <div class="post-meta">
+                            <span><i class="far fa-clock"></i> ۵ دقیقه</span>
+                            <span><i class="far fa-user"></i> نویسنده</span>
+                            <span><i class="far fa-calendar"></i> ۱۴۰۲/۰۱/۰۱</span>
+                        </div>
+                        <a href="#" class="read-more">ادامه مطلب</a>
+                    </div>
+                </article>
+                <!-- Repeat post-card for more posts -->
+            </div>
+            <div class="pagination">
+                <a href="#" class="active">۱</a>
+                <a href="#">۲</a>
+                <a href="#">۳</a>
+                <a href="#">۴</a>
+                <a href="#">۵</a>
+                <a href="#" class="next">بعدی</a>
+            </div>
+        </section>
+    </main>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -69,6 +101,7 @@
             </div>
         </div>
     </footer>
-    <script src="{% static 'js/main.js' %}"></script>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

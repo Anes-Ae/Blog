@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جستجو - وبلاگ مدرن</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>وبلاگ</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">خانه</a>
+                <a href="posts.html">مقالات</a>
+                <a href="categories.html">دسته‌بندی‌ها</a>
+                <a href="about.html">درباره ما</a>
+                <a href="contact.html">تماس</a>
+                <a href="search.html" class="active"><i class="fas fa-search"></i></a>
+                <a href="dashboard.html" class="dashboard-btn">پنل کاربری</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="search-section">
+            <div class="search-header">
+                <h1>جستجوی پیشرفته</h1>
+                <p>در مقالات و محتوای وبلاگ جستجو کنید</p>
+            </div>
+
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="عبارت مورد نظر خود را وارد کنید...">
+                    <button type="button" id="searchButton">
+                        <i class="fas fa-search"></i>
+                        جستجو
+                    </button>
+                </div>
+
+                <div class="search-filters">
+                    <div class="filter-group">
+                        <label>دسته‌بندی</label>
+                        <select id="categoryFilter">
+                            <option value="">همه دسته‌ها</option>
+                            <option value="technology">تکنولوژی</option>
+                            <option value="programming">برنامه‌نویسی</option>
+                            <option value="design">طراحی</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>مرتب‌سازی</label>
+                        <select id="sortFilter">
+                            <option value="newest">جدیدترین</option>
+                            <option value="oldest">قدیمی‌ترین</option>
+                            <option value="popular">محبوب‌ترین</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>تاریخ</label>
+                        <select id="dateFilter">
+                            <option value="">همه زمان‌ها</option>
+                            <option value="today">امروز</option>
+                            <option value="week">هفته اخیر</option>
+                            <option value="month">ماه اخیر</option>
+                            <option value="year">سال اخیر</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-results">
+                <h2>نتایج جستجو</h2>
+                <div class="results-info">
+                    <p><span id="resultsCount">0</span> نتیجه یافت شد</p>
+                </div>
+                <div class="results-grid">
+                    <!-- نتایج جستجو اینجا نمایش داده می‌شوند -->
+                </div>
+                <div class="no-results" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>نتیجه‌ای یافت نشد</h3>
+                    <p>لطفاً با کلمات کلیدی دیگری جستجو کنید</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>درباره ما</h3>
+                    <p>وبلاگی برای به اشتراک‌گذاری دانش و تجربیات در حوزه تکنولوژی</p>
+                </div>
+                <div class="footer-section">
+                    <h3>لینک‌های مفید</h3>
+                    <ul>
+                        <li><a href="about.html">درباره ما</a></li>
+                        <li><a href="contact.html">تماس با ما</a></li>
+                        <li><a href="privacy.html">حریم خصوصی</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>شبکه‌های اجتماعی</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; ۱۴۰۲ تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html> 

@@ -1,6 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import gettext_lazy as _, slugify
+
 from taggit.managers import TaggableManager
 
 class Category(models.Model):
@@ -21,9 +22,10 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('category-detail', args=[self.slug])
 
+
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = self.title.replace(' ', '-')
+            self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)
 
     class Meta:

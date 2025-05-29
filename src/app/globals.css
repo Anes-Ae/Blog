@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-textPrimary dark:text-dark-textPrimary bg-background dark:bg-dark-background;
+  }
+}
+
+/* Theme transition */
+.theme-transition {
+  @apply transition-theme duration-500;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cardBackground dark:bg-dark-cardBackground;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent bg-opacity-50 rounded-full hover:bg-opacity-75 transition-colors;
+}
+
+/* Theme switch animation */
+.theme-switch-animation {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+/* Glass effect */
+.glass-effect {
+  @apply backdrop-blur-md bg-white bg-opacity-10 dark:bg-black dark:bg-opacity-10;
+}
+
+/* Card hover effect */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg hover:transform hover:scale-[1.02];
+}
+
+/* Link hover effect */
+.link-hover {
+  @apply transition-colors hover:text-accent;
+}
+
+/* Button hover effect */
+.button-hover {
+  @apply transition-colors hover:bg-buttonHover dark:hover:bg-dark-buttonHover;
+}
+
+/* Responsive container */
+.container {
+  @apply px-4 mx-auto max-w-7xl;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-textPrimary dark:text-dark-textPrimary;
+}
+
+p {
+  @apply text-textSecondary dark:text-dark-textSecondary;
+}
+
+/* Form elements */
+input, textarea {
+  @apply bg-cardBackground dark:bg-dark-cardBackground border border-border dark:border-dark-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all;
+}
+
+/* Button styles */
+button {
+  @apply transition-all duration-300;
+}
+
+/* Navigation active state */
+.nav-link.active {
+  @apply text-accent;
+} 

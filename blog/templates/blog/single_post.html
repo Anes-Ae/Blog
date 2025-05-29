@@ -1,0 +1,116 @@
+{% extends '_base.html' %}
+
+{% block page_title %}{{ post.title }} - وبلاگ{% endblock %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/single_post.css' %}">
+{% endblock %}
+{% block page_content %}
+<main class="single-post">
+    <div class="container">
+        <article class="post-content">
+            <header class="post-header">
+                <h1 class="post-title">{{ post.title }}</h1>
+                <div class="post-meta">
+                    <span class="post-date">
+                        <i class="far fa-calendar-alt"></i>
+                        {{ post.created_at }}
+                    </span>
+                    <span class="post-author">
+                        <i class="far fa-user"></i>
+                        نویسنده: {{ post.author }}
+                    </span>
+                    <span class="post-category">
+                        <i class="far fa-folder"></i>
+                        دسته‌بندی: برنامه‌نویسی
+                    </span>
+                </div>
+            </header>
+
+            <div class="post-featured-image">
+                <img src="path/to/image.jpg" alt="تصویر پست">
+            </div>
+
+            <div class="post-body">
+                {{ post.main_content|safe }}
+            </div>
+
+            <footer class="post-footer">
+                <div class="post-tags">
+                    <i class="fas fa-tags"></i>
+                    <a href="#">برنامه‌نویسی</a>
+                    <a href="#">پایتون</a>
+                    <a href="#">جنگو</a>
+                </div>
+
+                <div class="post-share">
+                    <span>اشتراک‌گذاری:</span>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="telegram"><i class="fab fa-telegram"></i></a>
+                </div>
+            </footer>
+        </article>
+
+        <section class="post-comments">
+            <h3>نظرات (۳)</h3>
+            <div class="comment-form">
+                <h4>نظر خود را بنویسید</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="comment-name">نام</label>
+                        <input type="text" id="comment-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-email">ایمیل</label>
+                        <input type="email" id="comment-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-text">نظر</label>
+                        <textarea id="comment-text" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">ارسال نظر</button>
+                </form>
+            </div>
+
+            <div class="comments-list">
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="path/to/avatar.jpg" alt="آواتار کاربر">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-meta">
+                            <span class="comment-author">رضا احمدی</span>
+                            <span class="comment-date">۱۶ فروردین ۱۴۰۲</span>
+                        </div>
+                        <p>مطلب بسیار مفیدی بود. ممنون از اشتراک‌گذاری تجربیاتتون.</p>
+                        <button class="reply-btn">پاسخ</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="related-posts">
+            <h3>مطالب مرتبط</h3>
+            <div class="related-posts-grid">
+                <article class="related-post">
+                    <img src="path/to/related1.jpg" alt="تصویر پست مرتبط">
+                    <h4><a href="#">عنوان پست مرتبط اول</a></h4>
+                    <span class="post-date">۱۰ فروردین ۱۴۰۲</span>
+                </article>
+                <article class="related-post">
+                    <img src="path/to/related2.jpg" alt="تصویر پست مرتبط">
+                    <h4><a href="#">عنوان پست مرتبط دوم</a></h4>
+                    <span class="post-date">۸ فروردین ۱۴۰۲</span>
+                </article>
+                <article class="related-post">
+                    <img src="path/to/related3.jpg" alt="تصویر پست مرتبط">
+                    <h4><a href="#">عنوان پست مرتبط سوم</a></h4>
+                    <span class="post-date">۵ فروردین ۱۴۰۲</span>
+                </article>
+            </div>
+        </aside>
+    </div>
+</main>
+{% endblock %}
