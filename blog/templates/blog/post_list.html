@@ -1,0 +1,55 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% block page_title %}  {% endblock %}
+
+{% block page_content %}
+
+    <main class="container">
+        <section class="posts-section">
+            <h1>همه مقالات</h1>
+            <div class="posts-filter">
+                <input type="text" class="search-input" placeholder="جستجو در مقالات...">
+                <select class="category-filter">
+                    <option value="">همه دسته‌ها</option>
+                    <option value="technology">تکنولوژی</option>
+                    <option value="programming">برنامه‌نویسی</option>
+                    <option value="design">طراحی</option>
+                </select>
+            </div>
+            <div class="posts-grid">
+                <!-- Post Card Template -->
+                {% for post in post_list %}
+                <article class="post-card">
+                    {% if post.featured_image %}
+                    <div class="post-image">
+                        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                    </div>
+                    {% endif %}
+                    <div class="post-content">
+                        <div class="post-category">تکنولوژی</div>
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.description|truncatewords:10 }}</p>
+                        <div class="post-meta">
+                            <span><i class="far fa-clock"></i> {{ post.reading_time }} دقیقه</span>
+                            <span><i class="far fa-user"></i> {{ post.author }}</span>
+                            <span><i class="far fa-calendar"></i> {{ post.created_at }}</span>
+                        </div>
+                        <a href="#" class="read-more">ادامه مطلب</a>
+                    </div>
+                </article>
+                {% endfor %}
+                <!-- Repeat post-card for more posts -->
+            </div>
+            <div class="pagination">
+                <a href="#" class="active">۱</a>
+                <a href="#">۲</a>
+                <a href="#">۳</a>
+                <a href="#">۴</a>
+                <a href="#">۵</a>
+                <a href="#" class="next">بعدی</a>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

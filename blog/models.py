@@ -29,7 +29,7 @@ class Post(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, related_name='posts', verbose_name=_('author'))
     featured_image = models.ImageField(_('featured image'), upload_to='blog_images/', null=True, blank=True)
     main_content = HTMLField(_('main content'))
-    reading_time = models.PositiveIntegerField(blank=True, null=True)
+    reading_time = models.PositiveIntegerField(_('reading_time'), blank=True, null=True, help_text=_('In minutes'))
     description = models.TextField()
     status = models.CharField(_('status'), max_length=3, choices=POST_STATUS_CHOICES, default=POST_STATUS_DRAFT)
     publish = models.DateTimeField(default=timezone.now)
