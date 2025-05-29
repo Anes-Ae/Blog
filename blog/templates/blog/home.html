@@ -1,0 +1,34 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% block page_title %}  {% endblock %}
+
+{% block page_content %}
+    <main class="container">
+        <section class="featured-posts">
+            <h2>مقالات ویژه</h2>
+            <div class="posts-grid">
+                  {% for post in post_list %}
+                <article class="post-card">
+                    <div class="post-image">
+
+                        {% if post.featured_image %}
+                        <img src="{{ post.featured_image.url }}" alt="عنوان مقاله">
+                        {% endif %}
+                    </div>
+                    <div class="post-content">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.description|truncatewords:8 }}</p>
+                        <div class="post-meta">
+                            <span><i class="far fa-clock"></i>{{ post.reading_time }}</span>
+                            <span><i class="far fa-user"></i>{{ post.author }}</span>
+                        </div>
+                    </div>
+                </article>
+                {% empty %}
+                <p>مقاله ای یافت نشد!</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

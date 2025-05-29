@@ -7,6 +7,10 @@ from django.shortcuts import reverse
 from tinymce.models import HTMLField
 from taggit.managers import TaggableManager
 
+class PostManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status='pub').all()
+
 class Post(models.Model):
     POST_STATUS_PUBLISHED = 'pub'
     POST_STATUS_DRAFT = 'drf'
@@ -19,12 +23,13 @@ class Post(models.Model):
     )
 
     title = models.CharField(_('title'), max_length=150)
-    slug = models.SlugField(_('slug'), unique=True, blank=True, help_text=_(
+    slug = models.SlugField(_('slug'), unique=True, blank=True, allow_unicode=True, help_text=_(
         'It is preferable to leave this field blank so that it will be filled in automatically.'
     ))
     author = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, related_name='posts', verbose_name=_('author'))
-    featured_image = models.ImageField(_('featured image'), upload_to='blog images/', null=True, blank=True)
+    featured_image = models.ImageField(_('featured image'), upload_to='blog_images/', null=True, blank=True)
     main_content = HTMLField(_('main content'))
+    reading_time = models.PositiveIntegerField(blank=True, null=True)
     description = models.TextField()
     status = models.CharField(_('status'), max_length=3, choices=POST_STATUS_CHOICES, default=POST_STATUS_DRAFT)
     publish = models.DateTimeField(default=timezone.now)
@@ -36,6 +41,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    object = PostManager()
 
     def __str__(self):
         return f'title: {self.title} author: {self.author}'
